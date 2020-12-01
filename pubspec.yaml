@@ -28,6 +28,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/Fundo.jpg
+    - assets/images/araucaria.jpg
 
   
   uses-material-design: true

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'TelaRegistro.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -109,7 +110,12 @@ class TelaInicial extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30)),
                       color: Colors.greenAccent,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Registro()));
+                      },
                       child: Text(
                         "Entrar",
                         style: TextStyle(
