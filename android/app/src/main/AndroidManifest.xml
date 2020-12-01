@@ -11,6 +11,8 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="tree_finder"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyA1M_7s_zbezjya-VCp09fCR-cey0qi6VE"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
