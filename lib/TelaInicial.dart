@@ -54,7 +54,7 @@ class TelaInicial extends StatelessWidget {
                   height: 60,
                   margin: EdgeInsets.only(left: 40, right: 40),
                   child: TextField(
-                    style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Nome",
                       hintStyle: TextStyle(color: Colors.grey.shade700),
@@ -78,7 +78,6 @@ class TelaInicial extends StatelessWidget {
                   height: 60,
                   margin: EdgeInsets.only(left: 40, right: 40),
                   child: TextField(
-                    obscureText: true,
                     style: TextStyle(fontSize: 16, color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Sobrenome",
