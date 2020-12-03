@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'widgets/createSearchBar.dart';
+import "widgets/createRegister.dart";
 
 class Registro extends StatelessWidget {
   @override
@@ -43,68 +45,154 @@ class Registro extends StatelessWidget {
                     ],
                   ),
                 ),
-                createRegister(
-                    "Araucaria", "assets/images/araucaria.jpg", "20"),
+                createRegister("Araucaria", "assets/images/araucaria.jpg", "20",
+                    "Observações: Podar em 26/10/2020 \nAltura: 15.0m \nIdade: 20 anos"),
               ],
             ))
           ],
         ),
-        drawer: Container(
-            margin: EdgeInsets.only(right: 150), color: Colors.grey[700]));
-  }
-}
-
-Widget createRegister(arvoreNome, arvoreFoto, idArvore) {
-  return Container(
-    margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
-    height: 80,
-    decoration: BoxDecoration(
-        color: Colors.green, borderRadius: BorderRadius.circular(15)),
-    child: Row(
-      children: [
-        Container(
-            margin: EdgeInsets.only(
-              left: 15,
-              right: 15,
+        drawer: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 150),
+              height: 250,
+              decoration: BoxDecoration(
+                  color: Colors.black87,
+                  border: Border(
+                      bottom:
+                          BorderSide(color: Colors.blueGrey.withOpacity(0.4)))),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 70, left: 60),
+                    child: Column(
+                      children: [
+                        Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Colors.black, width: 1.5),
+                                borderRadius: BorderRadius.circular(100),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/araucaria.jpg"),
+                                    fit: BoxFit.cover))),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text("Rudney Eduardo",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              )),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Text("Fazenda",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            height: 65,
-            width: 65,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1.5),
-                borderRadius: BorderRadius.circular(100),
-                image: DecorationImage(
-                    image: AssetImage(arvoreFoto), fit: BoxFit.cover))),
-        Text("$arvoreNome - $idArvore",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w400,
-            ))
-      ],
-    ),
-  );
-}
-
-Widget createSearchBar(hint) {
-  return Container(
-      height: 60,
-      margin: EdgeInsets.all(40),
-      child: TextField(
-        style: TextStyle(
-          fontSize: 16,
-          color: Colors.white,
-        ),
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search_rounded, color: Colors.white),
-          hintText: hint,
-          hintStyle: TextStyle(color: Colors.grey),
-          filled: true,
-          fillColor: Colors.black87.withOpacity(0.9),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide(color: Colors.greenAccent[700])),
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide(color: Colors.greenAccent[700])),
-        ),
-      ));
+            Container(
+              margin: EdgeInsets.only(right: 150),
+              height: 250,
+              decoration: BoxDecoration(
+                  color: Colors.black87,
+                  border: Border(
+                      bottom:
+                          BorderSide(color: Colors.blueGrey.withOpacity(0.4)))),
+              child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 15.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.map_rounded,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: InkWell(
+                          onTap: () {
+                            print("Rudney da o cu");
+                          },
+                          child: Text(
+                            "Abrir Mapa",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 15.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.qr_code_scanner_rounded,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: InkWell(
+                          onTap: () {
+                            print("Rudney da o cu");
+                          },
+                          child: Text(
+                            "Abrir Leitor QR",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 15.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.qr_code_rounded,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: InkWell(
+                          onTap: () {
+                            print("Rudney da o cu");
+                          },
+                          child: Text(
+                            "Registrar QR",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ]),
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 150),
+              height: 343,
+              decoration: BoxDecoration(
+                  color: Colors.black87,
+                  border: Border(
+                      bottom:
+                          BorderSide(color: Colors.blueGrey.withOpacity(0.4)))),
+            )
+          ],
+        ));
+  }
 }
