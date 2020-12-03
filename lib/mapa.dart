@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tree_finder/utils/generateRandomId.dart';
 
 import 'utils/mapping.dart';
 
@@ -12,29 +11,38 @@ class Mapa extends StatefulWidget {
 
 class _MapaState extends State<Mapa> {
   GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(45.521563, -122.677433);
-
-  void _onMapCreated(GoogleMapController controller) {
+  Set<Marker> _markers = {};
+  List json = [0, 1, 2, 3, 4, 5];
+  void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
+    List getCoords = await getPosition();
+    String randomId = await generateRandomId(json);
+    LatLng coords = LatLng(getCoords[0], getCoords[1]);
+    setState(() {
+      _markers.add(Marker(
+        markerId: MarkerId(randomId),
+        position: coords,
+      ));
+    });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Maps Sample App'),
-          backgroundColor: Colors.green[700],
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => FutureBuilder(
+      future: getPosition(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          LatLng coords = LatLng(snapshot.data[0], snapshot.data[1]);
+
+          return GoogleMap(
+            markers: _markers,
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: coords,
+              zoom: 11.0,
+            ),
+          );
+        } else {
+          return CircularProgressIndicator();
+        }
+      });
 }
